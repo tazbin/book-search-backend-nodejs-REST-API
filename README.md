@@ -20,7 +20,7 @@
 - [x] Node.js
 
 **API for books**
-- [x] IT Book Store API
+- [x] [IT Book Store API](https://api.itbook.store/)
 
 **Database**
 - [x] MongoDB
