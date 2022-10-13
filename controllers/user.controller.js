@@ -14,7 +14,6 @@ const {
     signRefreshToken,
     verifyRefreshToken
 } = require('../helpers/jwt.helper');
-const client = require('../helpers/init_redis.helper');
 const ObjectId = require('mongoose').Types.ObjectId;
 
 
@@ -107,14 +106,7 @@ const logoutUser = async(req, res, next) => {
 
         const userId = await verifyRefreshToken(refreshToken);
 
-        // matching & deleting with redis cache
-        client.DEL(userId, (err, val) => {
-            if(err) {
-                console.log(err.message);
-                throw createErrors.Forbidden();
-            }
-            res.sendStatus(204);
-        });
+        res.sendStatus(204);
 
     } catch (err) {
         next(err);

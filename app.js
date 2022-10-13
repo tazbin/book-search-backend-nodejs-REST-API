@@ -8,7 +8,6 @@ const bookRouter = require('./routes/book.route');
 
 require('dotenv').config();
 require('./helpers/init_mongoDB.helper');
-require('./helpers/init_redis.helper');
 
 // constants
 const app = express();

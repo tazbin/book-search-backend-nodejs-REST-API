@@ -1,7 +1,6 @@
 // imports
 const jwt = require('jsonwebtoken');
 const createErrors = require('http-errors');
-const client = require('./init_redis.helper');
 require('dotenv').config();
 
 /***
@@ -68,12 +67,6 @@ const signRefreshToken = async (userId) => {
         };
 
         const refreshToken = await jwt.sign(payload, privateKey, options);
-        client.SET(userId, refreshToken, 'EX', 1*24*60*60, (err, reply) => {
-            if(err) {
-                console.log(err.message);
-                return Promise.reject(createErrors.BadRequest('Try again!'));
-            }
-        });
         return Promise.resolve(refreshToken);
         
     } catch (err) {
@@ -91,17 +84,6 @@ const verifyRefreshToken = (refreshToken) => {
             const decoded = await jwt.verify(refreshToken, process.env.refreshTokenKey);
             
             const userId = decoded.aud;
-
-            client.GET(userId, (err, token) => {
-                if(err) {
-                    console.log(err.message);
-                    return reject(createErrors.Forbidden());
-                } else if( token != refreshToken ) {
-                    return reject(createErrors.Forbidden());
-                } else {
-                    return resolve(userId)
-                }
-            });
 
         } catch (err) {
             err.status = 403;
