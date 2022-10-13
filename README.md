@@ -6,6 +6,14 @@
 
 <em> Visit complete live project [book-search241.netlify.app](https://book-search241.netlify.app/) </em>
 
+### Contents
+
+- [Features](#features)
+- [Tech used](#tech-used)
+- [How to get the project](#how-to-get-the-project) 
+- [Run the project using docker](#run-the-project-using-docker) 
+- [API endpoints](#api-endpoints) 
+
 ## Features:
 - Users can create their profiles (token-based authentication)
 - Users can search for books by title, author or keywords
@@ -25,19 +33,10 @@
 **Database**
 - [x] MongoDB
 
-**Dependencies**
-- [x] bcrypt: ^5.0.0,
-- [x] cors: ^2.8.5,
-- [x] dotenv: ^8.2.0,
-- [x] express: ^4.17.1,
-- [x] http-errors: ^1.8.0,
-- [x] joi: ^17.4.0,
-- [x] jsonwebtoken: ^8.5.1,
-- [x] mongoose: ^5.11.18,
-- [x] node-fetch: ^2.6.1
-- [x] redis: ^3.0.2
+**Containerized tool**
+- [x] Docker
 
-## How to install & run:
+## How to get the project:
 ### Using Git (recommended)
 1. Navigate & open CLI into the directory where you want to put this project & Clone this project (will be cloned inside myProject folder) using this command.
    
@@ -59,21 +58,50 @@ npm install
 3. The `.env` file is already ignored, so your credentials inside it won't be committed
 4. Change the values of the file. Make changes of comment to the `.env.example` file while adding new constants to the `.env` file.
 
-### Run the project
-```bash
-npm start
-```
+## Run the project using docker
+1. To build **docker image**
+    ```bash
+    docker compose build --no-cache
+    ```
 
-You can be sure that the server is running by checking this output in the command window
-```bash
-server running at port 3000...
-Client connected to redis
-Client connected to redis & ready to use...
-mongodb successfully connected...
-mongodb connected...
-```
+2. To run the **containers** in detached mode (wait for a while for database connection)
+    ```bash
+    docker compose up -d
+    ```
 
-Press `CTRL + C` to stop the server.
+3. To view running **containers**
+    ```bash
+    docker container ps
+    ```
+
+4. To view **API logs**
+    ```bash
+    docker logs booksearch-api-c
+    ```
+
+5. To **run tests**, first enter within the API container
+   - on windows CMD (not switching to bash)
+        ```bash
+        docker exec -it booksearch-api-c /bin/sh
+        ```
+   - on windows CMD (after switching to bash)
+        ```bash
+        docker exec -it booksearch-api-c //bin//sh
+        ```
+        or
+        ```bash
+        winpty docker exec -it booksearch-api-c //bin//sh
+        ```
+    now run **test command**
+    ```bash
+    npm test
+    ```
+6. To exit from **API container**, press <kbd>Ctrl</kbd>+<kbd>D</kbd> on terminal
+
+7. To **stop** the containers
+    ```bash
+    docker compose down
+    ```
 
 ## API endpoints:
 
