@@ -21,12 +21,12 @@ services:
             - /usr/src/app/node_modules
         container_name: booksearch-api-c
         environment: 
-            PORT = ${PORT}
-            MONGODB_URL = mongodb://mongo_db:27017
-            DB_NAME = ${DB_NAME}
-            accessTokenKey = ${accessTokenKey}
-            refreshTokenKey = ${refreshTokenKey}
-            ITBOOKSTORE_API_URL = ${ITBOOKSTORE_API_URL}
+            PORT: ${PORT}
+            MONGODB_URL: mongodb://mongo_db:27017
+            DB_NAME: ${DB_NAME}
+            accessTokenKey: ${accessTokenKey}
+            refreshTokenKey: ${refreshTokenKey}
+            ITBOOKSTORE_API_URL: ${ITBOOKSTORE_API_URL}
         depends_on: 
             - mongo_db
 
