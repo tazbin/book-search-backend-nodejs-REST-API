@@ -8,11 +8,19 @@
 
 ### Contents
 
-- [Features](#features)
-- [Tech used](#tech-used)
-- [How to get the project](#how-to-get-the-project) 
-- [Run the project using docker](#run-the-project-using-docker) 
-- [API endpoints](#api-endpoints) 
+- [book-search-backend-nodejs-REST-API](#book-search-backend-nodejs-rest-api)
+    - [Contents](#contents)
+  - [Features:](#features)
+  - [Tech used:](#tech-used)
+  - [How to get the project:](#how-to-get-the-project)
+    - [Using Git (recommended)](#using-git-recommended)
+    - [Using manual download ZIP](#using-manual-download-zip)
+    - [Setting up environments](#setting-up-environments)
+  - [Run the project using docker](#run-the-project-using-docker)
+  - [API endpoints:](#api-endpoints)
+      - [*Indication*](#indication)
+    - [User related](#user-related)
+    - [Book related](#book-related)
 
 ## Features:
 - Users can create their profiles (token-based authentication)
@@ -38,19 +46,14 @@
 
 ## How to get the project:
 ### Using Git (recommended)
-1. Navigate & open CLI into the directory where you want to put this project & Clone this project (will be cloned inside myProject folder) using this command.
+1. Navigate & open CLI into the directory where you want to put this project & Clone this project using this command.
    
 ```bash
-git clone https://github.com/tazbin/book-search-backend-nodejs-REST-API.git ./myProject
+git clone https://github.com/tazbin/book-search-backend-nodejs-REST-API.git
 ```
 ### Using manual download ZIP
 1. Download repository
 2. Extract the zip file, navigate into it & copy the folder to your desired directory
-
-### Install npm dependencies after cloning or downloading
-```bash
-npm install
-```
 
 ### Setting up environments
 1. There is a file named `.env.example` on the root directory of the project
